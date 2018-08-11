@@ -38,8 +38,29 @@ public class WithdrawalScreen implements Screen{
 		doubleBalance -= amount;
 		if (doubleBalance < 0.0) {
 			System.out.println("Not enough funds");
-			return new HomeScreen();
+			System.out.println("Enter 1 to return to home screen");
+			System.out.println("Enter 2 to log out");
+			
+			String selection = scan.nextLine();
+			
+			switch (selection) {
+			
+			case "1":
+				Screen hs = new HomeScreen();
+				hs.start();
+				break;
+
+			case "2":
+				System.out.println("Session ended");
+				break;
+				
+			default:
+				break;
+			
+			}
+			return this;
 		}
+		
 		currentUser.setAccountBalance(df2.format(doubleBalance));
 		List<String> newTransactionHistory = currentUser.getTransactionHistory();
 		newTransactionHistory.add("Withdrew $" + amountString);

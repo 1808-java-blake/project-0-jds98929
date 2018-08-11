@@ -20,6 +20,8 @@
 			System.out.println("Enter 3 to view transaction history");
 			
 			System.out.println("Enter 4 to view account balance");
+			
+			System.out.println("Enter 5 to wire money");
 
 			String selection = scan.nextLine();
 
@@ -50,6 +52,13 @@
 				
 				Screen abs = new AccountBalanceScreen();
 				abs.start();
+				
+				break;
+				
+			case "5":
+				
+				Screen wires = new WireScreen();
+				wires.start();
 				
 				break;
 			

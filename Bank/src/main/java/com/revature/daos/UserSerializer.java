@@ -177,7 +177,6 @@ public class UserSerializer implements UserDao {
 
 			User u = (User) ois.readObject(); // retrieve the user if it can
 
-			// verify that the password matches
 
 			return u;
 

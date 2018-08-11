@@ -15,7 +15,12 @@ public class AdminScreen implements Screen {
 		System.out.println("Specify a customer to view account");
 		System.out.println("Username:");
 		String username = scan.nextLine();
+		
 		User u = ud.findByUsername(username);
+		if (u == null) {
+			System.out.println("Invalid username");
+			return this;
+		}
 
 		System.out.println("Please choose from following options:");
 
