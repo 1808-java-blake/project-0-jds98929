@@ -26,7 +26,7 @@ public class AdminScreen implements Screen {
 
 		System.out.println("Enter 1 to view customer's personal information");
 
-		System.out.println("Enter 2 to view customer's account balance");
+		System.out.println("Enter 2 to view customer's account balances");
 
 		System.out.println("Enter 3 to view customer's transaction history");
 
@@ -38,7 +38,27 @@ public class AdminScreen implements Screen {
 				break;
 
 			case "2":
-				System.out.println("Account balance: $" + u.getAccountBalance());
+				System.out.println("Enter 1 to view checking account balance");
+				System.out.println("Enter 2 to view savings account balance");
+				selection = scan.nextLine();
+				
+				switch (selection) {
+				
+				case "1":
+					System.out.println("Current checking account balance is $" + 
+							u.getCheckingAccountBalance());
+					break;
+
+				case "2":
+					System.out.println("Current savings account balance is $" + 
+							u.getSavingsAccountBalance());
+					break;
+					
+				default:
+					break;
+				
+				}
+				
 				break;
 				
 			case "3":

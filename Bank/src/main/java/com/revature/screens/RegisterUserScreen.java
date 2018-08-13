@@ -31,8 +31,10 @@ public class RegisterUserScreen implements Screen {
 
 		u.setLastName(scan.nextLine());
 		
-		u.setAccountBalance("0.00");
+		u.setCheckingAccountBalance("0.00");
 
+		u.setSavingsAccountBalance("0.00");
+		
 		System.out.println("Enter age");
 
 		String age = scan.nextLine();

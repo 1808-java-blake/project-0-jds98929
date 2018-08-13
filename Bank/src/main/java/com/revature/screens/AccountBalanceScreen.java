@@ -11,11 +11,32 @@ public class AccountBalanceScreen implements Screen{
 
 	public Screen start() {
 		
-		System.out.println("Current account balance is $" + currentUser.getAccountBalance());
+		System.out.println("View checking account or savings account?");
+		System.out.println("Enter 1 to view checking account balance");
+		System.out.println("Enter 2 to view savings account balance");
+		String selection = scan.nextLine();
+		
+		switch (selection) {
+		
+		case "1":
+			System.out.println("Current checking account balance is $" + 
+					currentUser.getCheckingAccountBalance());
+			break;
+
+		case "2":
+			System.out.println("Current savings account balance is $" + 
+					currentUser.getSavingsAccountBalance());
+			break;
+			
+		default:
+			break;
+		
+		}
+		
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		
-		String selection = scan.nextLine();
+		selection = scan.nextLine();
 		
 		switch (selection) {
 		

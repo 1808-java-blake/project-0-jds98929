@@ -16,62 +16,130 @@ public class WithdrawalScreen implements Screen{
 	@Override
 	
 	public Screen start() {
-		DecimalFormat df2 = new DecimalFormat("#.##");
-		double amount;
-		System.out.println("Enter amount to withdraw in the form dollars.cents: ");
-		String amountString = scan.nextLine();
-		int length = amountString.length();
-		if (amountString.charAt(length - 3) == '.') {
-			try {
-				amount = Double.valueOf(amountString);
-			} catch (NumberFormatException e) {
+		
+		System.out.println("Enter 1 to withdraw from checking account");
+		System.out.println("Enter 2 to withdraw from savings account");
+		String selection = scan.nextLine();
+		
+		switch (selection) {
+		
+		case "1":
+			DecimalFormat df2 = new DecimalFormat("#.##");
+			double amount;
+			System.out.println("Enter amount to withdraw in the form dollars.cents: ");
+			String amountString = scan.nextLine();
+			int length = amountString.length();
+			if (amountString.charAt(length - 3) == '.') {
+				try {
+					amount = Double.valueOf(amountString);
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid amount");
+					return new HomeScreen();
+				}
+			} else {
 				System.out.println("Invalid amount");
 				return new HomeScreen();
 			}
-		} else {
-			System.out.println("Invalid amount");
-			return new HomeScreen();
-		}
-		currentUser = LoginScreen.currentUser;
-		String stringBalance = currentUser.getAccountBalance();
-		Double doubleBalance = Double.valueOf(stringBalance);
-		doubleBalance -= amount;
-		if (doubleBalance < 0.0) {
-			System.out.println("Not enough funds");
-			System.out.println("Enter 1 to return to home screen");
-			System.out.println("Enter 2 to log out");
-			
-			String selection = scan.nextLine();
-			
-			switch (selection) {
-			
-			case "1":
-				Screen hs = new HomeScreen();
-				hs.start();
-				break;
-
-			case "2":
-				System.out.println("Session ended");
-				break;
+			currentUser = LoginScreen.currentUser;
+			String stringBalance = currentUser.getCheckingAccountBalance();
+			Double doubleBalance = Double.valueOf(stringBalance);
+			doubleBalance -= amount;
+			if (doubleBalance < 0.0) {
+				System.out.println("Not enough funds");
+				System.out.println("Enter 1 to return to home screen");
+				System.out.println("Enter 2 to log out");
 				
-			default:
-				break;
-			
+				selection = scan.nextLine();
+				
+				switch (selection) {
+				
+				case "1":
+					Screen hs = new HomeScreen();
+					hs.start();
+					break;
+
+				case "2":
+					System.out.println("Session ended");
+					break;
+					
+				default:
+					break;
+				
+				}
+				return this;
 			}
-			return this;
+			
+			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
+			List<String> newTransactionHistory = currentUser.getTransactionHistory();
+			newTransactionHistory.add("Withdrew $" + amountString);
+			currentUser.setTransactionHistory(newTransactionHistory);
+			ud.updateUser(currentUser);
+			break;
+
+		case "2":
+			DecimalFormat df22 = new DecimalFormat("#.##");
+			double amount2;
+			System.out.println("Enter amount to withdraw in the form dollars.cents: ");
+			String amountString2 = scan.nextLine();
+			int length2 = amountString2.length();
+			if (amountString2.charAt(length2 - 3) == '.') {
+				try {
+					amount2 = Double.valueOf(amountString2);
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid amount");
+					return new HomeScreen();
+				}
+			} else {
+				System.out.println("Invalid amount");
+				return new HomeScreen();
+			}
+			currentUser = LoginScreen.currentUser;
+			String stringBalance2 = currentUser.getSavingsAccountBalance();
+			Double doubleBalance2 = Double.valueOf(stringBalance2);
+			doubleBalance2 -= amount2;
+			if (doubleBalance2 < 0.0) {
+				System.out.println("Not enough funds");
+				System.out.println("Enter 1 to return to home screen");
+				System.out.println("Enter 2 to log out");
+				
+				selection = scan.nextLine();
+				
+				switch (selection) {
+				
+				case "1":
+					Screen hs = new HomeScreen();
+					hs.start();
+					break;
+
+				case "2":
+					System.out.println("Session ended");
+					break;
+					
+				default:
+					break;
+				
+				}
+				return this;
+			}
+			
+			currentUser.setSavingsAccountBalance(df22.format(doubleBalance2));
+			List<String> newTransactionHistory2 = currentUser.getTransactionHistory();
+			newTransactionHistory2.add("Withdrew $" + amountString2);
+			currentUser.setTransactionHistory(newTransactionHistory2);
+			ud.updateUser(currentUser);
+			break;
+			
+		default:
+			break;
+		
 		}
 		
-		currentUser.setAccountBalance(df2.format(doubleBalance));
-		List<String> newTransactionHistory = currentUser.getTransactionHistory();
-		newTransactionHistory.add("Withdrew $" + amountString);
-		currentUser.setTransactionHistory(newTransactionHistory);
-		ud.updateUser(currentUser);
 		
 		System.out.println("Withdrawal Successful");
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		
-		String selection = scan.nextLine();
+		selection = scan.nextLine();
 		
 		switch (selection) {
 		

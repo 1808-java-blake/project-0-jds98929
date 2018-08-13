@@ -38,7 +38,7 @@ public class WireScreen implements Screen{
 		}
 		
 		currentUser = LoginScreen.currentUser;
-		String stringSenderBalance = currentUser.getAccountBalance();
+		String stringSenderBalance = currentUser.getCheckingAccountBalance();
 		double doubleSenderBalance = Double.valueOf(stringSenderBalance);
 		doubleSenderBalance -= amount;
 		
@@ -67,17 +67,17 @@ public class WireScreen implements Screen{
 			return this;
 		}
 		
-		currentUser.setAccountBalance(df2.format(doubleSenderBalance));
+		currentUser.setCheckingAccountBalance(df2.format(doubleSenderBalance));
 		List<String> newTransactionHistory = currentUser.getTransactionHistory();
 		newTransactionHistory.add("Sent $" + amountString + " to " + 
-				recipient.getAccountBalance() + " " + recipient.getLastName());
+				recipient.getCheckingAccountBalance() + " " + recipient.getLastName());
 		currentUser.setTransactionHistory(newTransactionHistory);
 		ud.updateUser(currentUser);
 		
-		String stringRecipientBalance = recipient.getAccountBalance();
+		String stringRecipientBalance = recipient.getCheckingAccountBalance();
 		double doubleRecipientBalance = Double.valueOf(stringRecipientBalance);
 		doubleRecipientBalance += amount;
-		recipient.setAccountBalance(df2.format(doubleRecipientBalance));
+		recipient.setCheckingAccountBalance(df2.format(doubleRecipientBalance));
 		List<String> newTransactionHistory2 = recipient.getTransactionHistory();
 		newTransactionHistory2.add("Received $" + amountString +
 				"from" + currentUser.getFirstName() + currentUser.getLastName());

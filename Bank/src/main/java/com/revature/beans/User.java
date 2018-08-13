@@ -30,7 +30,9 @@ public class User implements Serializable {
 
 	private int age;
 
-	private String accountBalance;
+	private String checkingAccountBalance;
+	
+	private String savingsAccountBalance;
 	
 	private List<String> transactionHistory = new ArrayList<String>();
 	
@@ -140,20 +142,33 @@ public class User implements Serializable {
 
 	}
 	
-	public String getAccountBalance() {
+	public String getCheckingAccountBalance() {
 
-		return accountBalance;
+		return checkingAccountBalance;
+
+	}
+
+
+
+	public void setCheckingAccountBalance(String checkingAccountBalance) {
+
+		this.checkingAccountBalance = checkingAccountBalance;
+
+	}
+
+	public String getSavingsAccountBalance() {
+
+		return savingsAccountBalance;
 
 	}
 
 
 
-	public void setAccountBalance(String accountBalance) {
+	public void setSavingsAccountBalance(String savingsAccountBalance) {
 
-		this.accountBalance = accountBalance;
+		this.savingsAccountBalance = savingsAccountBalance;
 
 	}
-
 
 
 

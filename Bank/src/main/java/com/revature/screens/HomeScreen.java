@@ -19,7 +19,7 @@
 			
 			System.out.println("Enter 3 to view transaction history");
 			
-			System.out.println("Enter 4 to view account balance");
+			System.out.println("Enter 4 to view account balances");
 			
 			System.out.println("Enter 5 to wire money");
 

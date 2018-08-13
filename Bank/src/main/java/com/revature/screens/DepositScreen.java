@@ -16,37 +16,82 @@ public class DepositScreen implements Screen{
 	@Override
 	
 	public Screen start() {
-		double amount;
+		
+		double amount, doubleBalance;
 		DecimalFormat df2 = new DecimalFormat("#.##");
-		System.out.println("Enter amount to deposit in the form dollars.cents: ");
-		String amountString = scan.nextLine();
-		int length = amountString.length();
-		if (amountString.charAt(length - 3) == '.') {
-			try {
-				amount = Double.valueOf(amountString);
-			} catch (NumberFormatException e) {
+		String amountString, stringBalance;
+		int length;
+		
+		System.out.println("Enter 1 to deposit into checking account");
+		System.out.println("Enter 2 to deposit into savings account");
+		String selection = scan.nextLine();
+		
+		switch (selection) {
+		
+		case "1":
+			System.out.println("Enter amount to deposit in the form dollars.cents: ");
+			amountString = scan.nextLine();
+			length = amountString.length();
+			if (amountString.charAt(length - 3) == '.') {
+				try {
+					amount = Double.valueOf(amountString);
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid amount");
+					return new HomeScreen();
+				}
+			} else {
 				System.out.println("Invalid amount");
 				return new HomeScreen();
 			}
-		} else {
-			System.out.println("Invalid amount");
-			return new HomeScreen();
+			currentUser = LoginScreen.currentUser;
+			stringBalance = currentUser.getCheckingAccountBalance();
+			doubleBalance = Double.valueOf(stringBalance);
+			doubleBalance += amount;
+			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
+			List<String> newTransactionHistory = currentUser.getTransactionHistory();
+			newTransactionHistory.add("Deposited $" + amountString);
+			currentUser.setTransactionHistory(newTransactionHistory);
+			ud.updateUser(currentUser);
+			break;
+
+		case "2":
+			System.out.println("Enter amount to deposit in the form dollars.cents: ");
+			amountString = scan.nextLine();
+			length = amountString.length();
+			if (amountString.charAt(length - 3) == '.') {
+				try {
+					amount = Double.valueOf(amountString);
+				} catch (NumberFormatException e) {
+					System.out.println("Invalid amount");
+					return new HomeScreen();
+				}
+			} else {
+				System.out.println("Invalid amount");
+				return new HomeScreen();
+			}
+			currentUser = LoginScreen.currentUser;
+			stringBalance = currentUser.getSavingsAccountBalance();
+			doubleBalance = Double.valueOf(stringBalance);
+			doubleBalance += amount;
+			currentUser.setSavingsAccountBalance(df2.format(doubleBalance));
+			List<String> newTransactionHistory2 = currentUser.getTransactionHistory();
+			newTransactionHistory2.add("Deposited $" + amountString);
+			currentUser.setTransactionHistory(newTransactionHistory2);
+			ud.updateUser(currentUser);
+			break;
+			
+		default:
+			break;
+		
 		}
-		currentUser = LoginScreen.currentUser;
-		String stringBalance = currentUser.getAccountBalance();
-		double doubleBalance = Double.valueOf(stringBalance);
-		doubleBalance += amount;
-		currentUser.setAccountBalance(df2.format(doubleBalance));
-		List<String> newTransactionHistory = currentUser.getTransactionHistory();
-		newTransactionHistory.add("Deposited $" + amountString);
-		currentUser.setTransactionHistory(newTransactionHistory);
-		ud.updateUser(currentUser);
+		
+		
 		
 		System.out.println("Deposit Successful");
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		
-		String selection = scan.nextLine();
+		selection = scan.nextLine();
 		
 		switch (selection) {
 		
