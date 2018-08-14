@@ -30,7 +30,7 @@ public class DepositScreen implements Screen{
 		
 		double amount, doubleBalance;
 		DecimalFormat df2 = new DecimalFormat("#.##");
-		String amountString, stringBalance;
+		String amountString;
 		int length;
 		List<String> newTransactionHistory;
 		

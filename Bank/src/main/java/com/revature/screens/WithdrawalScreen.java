@@ -11,7 +11,7 @@ public class WithdrawalScreen implements Screen{
 	
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao; 
-	public static User currentUser;
+	public static User currentUser = LoginScreen.currentUser;
 	
 	@Override
 	
@@ -50,10 +50,7 @@ public class WithdrawalScreen implements Screen{
 				System.out.println("Invalid amount");
 				this.returnOrQuit();
 			}
-			currentUser = LoginScreen.currentUser;
-			String stringBalance = currentUser.getCheckingAccountBalance();
-			Double doubleBalance = Double.valueOf(stringBalance);
-			doubleBalance -= amount;
+			double doubleBalance = getCheckingBalance(currentUser, amount);
 		
 			if (doubleBalance < 0.0) {
 				System.out.println("Not enough funds");
@@ -92,10 +89,7 @@ public class WithdrawalScreen implements Screen{
 				this.returnOrQuit();
 				return this;
 			}
-			currentUser = LoginScreen.currentUser;
-			String stringBalance2 = currentUser.getSavingsAccountBalance();
-			Double doubleBalance2 = Double.valueOf(stringBalance2);
-			doubleBalance2 -= amount2;
+			double doubleBalance2 = getSavingsBalance(currentUser, amount2);
 			if (doubleBalance2 < 0.0) {
 				System.out.println("Not enough funds");
 				this.returnOrQuit();
@@ -142,6 +136,20 @@ public class WithdrawalScreen implements Screen{
 		
 		}
 		return this;
+	}
+	
+	public double getSavingsBalance(User u, double amount) {
+		String stringBalance = u.getSavingsAccountBalance();
+		Double doubleBalance = Double.valueOf(stringBalance);
+		doubleBalance -= amount;
+		return doubleBalance;
+	}
+	
+	public double getCheckingBalance(User u, double amount) {
+		String stringBalance = u.getCheckingAccountBalance();
+		Double doubleBalance = Double.valueOf(stringBalance);
+		doubleBalance -= amount;
+		return doubleBalance;
 	}
 
 }
