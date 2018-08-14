@@ -11,20 +11,28 @@ public class DepositScreen implements Screen{
 	
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao; 
-	public static User currentUser;
+	public static User currentUser = LoginScreen.currentUser;
 	
 	@Override
 	
 	public Screen start() {
 		
+		System.out.println("Enter 1 to deposit into checking account");
+		System.out.println("Enter 2 to deposit into savings account");
+		String selection = scan.nextLine();
+		
+		deposit(selection);
+		
+		return this;
+	}
+	
+	public Screen deposit(String selection) {
+		
 		double amount, doubleBalance;
 		DecimalFormat df2 = new DecimalFormat("#.##");
 		String amountString, stringBalance;
 		int length;
-		
-		System.out.println("Enter 1 to deposit into checking account");
-		System.out.println("Enter 2 to deposit into savings account");
-		String selection = scan.nextLine();
+		List<String> newTransactionHistory;
 		
 		switch (selection) {
 		
@@ -37,20 +45,17 @@ public class DepositScreen implements Screen{
 					amount = Double.valueOf(amountString);
 				} catch (NumberFormatException e) {
 					System.out.println("Invalid amount");
-					return new HomeScreen();
+					return this;
 				}
 			} else {
 				System.out.println("Invalid amount");
-				return new HomeScreen();
+				return this;
 			}
-			currentUser = LoginScreen.currentUser;
-			stringBalance = currentUser.getCheckingAccountBalance();
-			doubleBalance = Double.valueOf(stringBalance);
-			doubleBalance += amount;
+			doubleBalance = getCheckingBalance(currentUser, amount);
 			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
-			List<String> newTransactionHistory = currentUser.getTransactionHistory();
-			newTransactionHistory.add("Deposited $" + amountString);
-			currentUser.setTransactionHistory(newTransactionHistory);
+			newTransactionHistory = currentUser.getTransactionHistory();
+			newTransactionHistory.add("Deposited $" + amountString + " into checking");
+			currentUser.setTransactionHistory(newTransactionHistory);	
 			ud.updateUser(currentUser);
 			break;
 
@@ -63,20 +68,17 @@ public class DepositScreen implements Screen{
 					amount = Double.valueOf(amountString);
 				} catch (NumberFormatException e) {
 					System.out.println("Invalid amount");
-					return new HomeScreen();
+					return this;
 				}
 			} else {
 				System.out.println("Invalid amount");
-				return new HomeScreen();
+				return this;
 			}
-			currentUser = LoginScreen.currentUser;
-			stringBalance = currentUser.getSavingsAccountBalance();
-			doubleBalance = Double.valueOf(stringBalance);
-			doubleBalance += amount;
+			doubleBalance = getSavingsBalance(currentUser, amount);
 			currentUser.setSavingsAccountBalance(df2.format(doubleBalance));
-			List<String> newTransactionHistory2 = currentUser.getTransactionHistory();
-			newTransactionHistory2.add("Deposited $" + amountString);
-			currentUser.setTransactionHistory(newTransactionHistory2);
+			newTransactionHistory = currentUser.getTransactionHistory();
+			newTransactionHistory.add("Deposited $" + amountString + " into savings");
+			currentUser.setTransactionHistory(newTransactionHistory);
 			ud.updateUser(currentUser);
 			break;
 			
@@ -84,8 +86,6 @@ public class DepositScreen implements Screen{
 			break;
 		
 		}
-		
-		
 		
 		System.out.println("Deposit Successful");
 		System.out.println("Enter 1 to return to home screen");
@@ -111,5 +111,20 @@ public class DepositScreen implements Screen{
 		return this;
 		
 	}
+	
+	public double getSavingsBalance(User u, double amount) {
+		String stringBalance = u.getSavingsAccountBalance();
+		Double doubleBalance = Double.valueOf(stringBalance);
+		doubleBalance += amount;
+		return doubleBalance;
+	}
+	
+	public double getCheckingBalance(User u, double amount) {
+		String stringBalance = u.getCheckingAccountBalance();
+		Double doubleBalance = Double.valueOf(stringBalance);
+		doubleBalance += amount;
+		return doubleBalance;
+	}
+	
 
 }

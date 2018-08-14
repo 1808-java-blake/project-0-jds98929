@@ -1,5 +1,6 @@
 package com.revature.screens;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.revature.beans.User;
@@ -16,16 +17,22 @@ public class AccountBalanceScreen implements Screen{
 		System.out.println("Enter 2 to view savings account balance");
 		String selection = scan.nextLine();
 		
+		DecimalFormat df2 = new DecimalFormat("#.##");
+		
 		switch (selection) {
 		
 		case "1":
+			String checkingString = currentUser.getCheckingAccountBalance();
+			double checkingDouble = Double.valueOf(checkingString);
 			System.out.println("Current checking account balance is $" + 
-					currentUser.getCheckingAccountBalance());
+					df2.format(checkingDouble));
 			break;
 
 		case "2":
+			String savingsString = currentUser.getSavingsAccountBalance();
+			double savingsDouble = Double.valueOf(savingsString);
 			System.out.println("Current savings account balance is $" + 
-					currentUser.getSavingsAccountBalance());
+					df2.format(savingsDouble));
 			break;
 			
 		default:

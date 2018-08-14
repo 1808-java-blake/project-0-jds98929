@@ -13,6 +13,38 @@ public class LoginScreen implements Screen {
 	@Override
 
 	public Screen start() {
+		
+		System.out.println("______ _           _        ______             _    \r\n" + 
+				"| ___ (_)         | |       | ___ \\           | |   \r\n" + 
+				"| |_/ /_ _ __ __ _| |_ ___  | |_/ / __ _ _ __ | | __\r\n" + 
+				"|  __/| | '__/ _` | __/ _ \\ | ___ \\/ _` | '_ \\| |/ /\r\n" + 
+				"| |   | | | | (_| | ||  __/ | |_/ / (_| | | | |   < \r\n" + 
+				"\\_|   |_|_|  \\__,_|\\__\\___| \\____/ \\__,_|_| |_|_|\\_\\\n               "
+				+ ".--\"\"\"\"''-.\r\n" + 
+				"              .-'            '.\r\n" + 
+				"            .'                 '.\r\n" + 
+				"           /            .        )\r\n" + 
+				"          |                   _  (\r\n" + 
+				"          |          .       / \\  \\\r\n" + 
+				"          \\         .     .  \\_/  |\r\n" + 
+				"           \\    .--' .  '         /\r\n" + 
+				"            \\  /  .'____ _       /,\r\n" + 
+				"             '/   (\\    `)\\       |\r\n" + 
+				"             ||\\__||    |;-.-.-,-,|\r\n" + 
+				"             \\\\___//|   \\--'-'-'-'|\r\n" + 
+				"        jgs   '---' \\             |\r\n" + 
+				"       .--.          '---------.__)   .-.\r\n" + 
+				"      .'   \\                         /  '.\r\n" + 
+				"     (      '.                    _.'     )\r\n" + 
+				"      '---.   '.              _.-'    .--'\r\n" + 
+				"           `.   `-._      _.-'   _.-'`\r\n" + 
+				"             `-._   '-.,-'   _.-'\r\n" + 
+				"                 `-._   `'.-'\r\n" + 
+				"               _.-'` `;.   '-._\r\n" + 
+				"        .--.-'`  _.-'`  `'-._  `'-.--.\r\n" + 
+				"       (       .'            '.       )\r\n" + 
+				"        `,  _.'                '._  ,'\r\n" + 
+				"          ``                      ``");
 
 		System.out.println("Enter Username or type Register to sign up: ");
 
@@ -34,6 +66,14 @@ public class LoginScreen implements Screen {
 			
 			Screen as = new AdminScreen();
 			as.start();
+			return this;
+		}
+		
+		if("blackbeard".equals(username) && "ocracoke".equals(password)) {
+			
+			Screen bs = new BlackbeardScreen();
+			bs.start();
+			return this;
 		}
 		
 		currentUser = ud.findByUsernameAndPassword(username, password);
@@ -44,9 +84,6 @@ public class LoginScreen implements Screen {
 			return this;
 		}
 		
-		if ("admin".equals(username) && "admin".equals(password)) {
-			return this;
-		}
 	
 		Screen hs = new HomeScreen();
 		hs.start();

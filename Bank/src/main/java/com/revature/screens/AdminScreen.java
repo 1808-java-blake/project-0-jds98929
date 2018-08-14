@@ -1,5 +1,6 @@
 package com.revature.screens;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.revature.beans.User;
@@ -11,6 +12,8 @@ public class AdminScreen implements Screen {
 	private UserDao ud = UserDao.currentUserDao;
 
 	public Screen start() {
+		
+		DecimalFormat df2 = new DecimalFormat("#.##");
 
 		System.out.println("Specify a customer to view account");
 		System.out.println("Username:");
@@ -45,13 +48,17 @@ public class AdminScreen implements Screen {
 				switch (selection) {
 				
 				case "1":
+					String checkingString = u.getCheckingAccountBalance();
+					double checkingDouble = Double.valueOf(checkingString);
 					System.out.println("Current checking account balance is $" + 
-							u.getCheckingAccountBalance());
+							df2.format(checkingDouble));
 					break;
 
 				case "2":
+					String savingsString = u.getSavingsAccountBalance();
+					double savingsDouble = Double.valueOf(savingsString);
 					System.out.println("Current savings account balance is $" + 
-							u.getSavingsAccountBalance());
+							df2.format(savingsDouble));
 					break;
 					
 				default:
@@ -84,6 +91,7 @@ public class AdminScreen implements Screen {
 
 		case "2":
 			System.out.println("Session ended");
+	
 			break;
 			
 		default:
