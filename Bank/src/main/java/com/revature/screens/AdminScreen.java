@@ -4,12 +4,14 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.daos.TransactionDao;
 import com.revature.daos.UserDao;
 
 public class AdminScreen implements Screen {
 
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao;
+	private TransactionDao td = TransactionDao.currentTransactionDao;
 
 	public Screen start() {
 		
@@ -69,7 +71,8 @@ public class AdminScreen implements Screen {
 				break;
 				
 			case "3":
-				System.out.println(u.getTransactionHistory());
+				td.retrieveTransactionHistory(u);
+				System.out.println(u.getT().getTransactionList());
 				break;
 				
 			default:
@@ -85,14 +88,12 @@ public class AdminScreen implements Screen {
 		switch (selection) {
 		
 		case "1":
-			Screen as = new AdminScreen();
-			as.start();
-			break;
+			return new AdminScreen();
+
 
 		case "2":
 			System.out.println("Session ended");
-	
-			break;
+			return new LoginScreen();
 			
 		default:
 			break;

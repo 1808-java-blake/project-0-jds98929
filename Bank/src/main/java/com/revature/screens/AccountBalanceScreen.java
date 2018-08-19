@@ -4,13 +4,16 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.util.AppState;
 
 public class AccountBalanceScreen implements Screen{
 	
-	public static User currentUser = LoginScreen.currentUser;
 	private Scanner scan = new Scanner(System.in);
+	private AppState state = AppState.state;
 
 	public Screen start() {
+		
+		User currentUser = state.getCurrentUser();
 		
 		System.out.println("View checking account or savings account?");
 		System.out.println("Enter 1 to view checking account balance");
@@ -48,13 +51,11 @@ public class AccountBalanceScreen implements Screen{
 		switch (selection) {
 		
 		case "1":
-			Screen hs = new HomeScreen();
-			hs.start();
-			break;
+			return new HomeScreen();
 
 		case "2":
 			System.out.println("Session ended");
-			break;
+			return new LoginScreen();
 			
 		default:
 			break;

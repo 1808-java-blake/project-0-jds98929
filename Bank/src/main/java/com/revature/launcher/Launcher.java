@@ -9,8 +9,9 @@
 		public static void main(String[] args) {
 
 			Screen s = new LoginScreen();
-			s = s.start();
-
+			while (true) {
+				s = s.start();
+			}
 		}
 
 	}

@@ -1,0 +1,192 @@
+2018-08-18 23:15:37 ERROR UserDaoJdbc:52 - FATAL: password authentication failed for user "postgres"
+2018-08-18 23:15:37 WARN  UserDaoJdbc:54 - failed to create new user
+2018-08-18 23:22:10 INFO  LoginScreen:89 - user successfully logged in
+2018-08-18 23:22:10 INFO  LoginScreen:90 - welcomeUser [id=0, username=null, password=null, firstName=null, lastName=null, age=0, checkingAccountBalance=null, savingsAccountBalance=null, transactionHistory=[]]
+2018-08-18 23:25:44 ERROR UserDaoJdbc:52 - ERROR: relation "app_users" does not exist
+  Position: 13
+2018-08-18 23:25:44 WARN  UserDaoJdbc:54 - failed to create new user
+2018-08-18 23:25:59 TRACE UserDaoJdbc:83 - failed to find user with provided credentials from the db
+2018-08-18 23:32:52 ERROR UserDaoJdbc:52 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-18 23:32:52 WARN  UserDaoJdbc:54 - failed to create new user
+2018-08-18 23:33:03 TRACE UserDaoJdbc:83 - failed to find user with provided credentials from the db
+2018-08-18 23:34:32 ERROR UserDaoJdbc:52 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-18 23:34:32 WARN  UserDaoJdbc:54 - failed to create new user
+2018-08-18 23:34:42 TRACE UserDaoJdbc:83 - failed to find user with provided credentials from the db
+2018-08-19 01:09:14 TRACE UserDaoJdbc:85 - failed to find user with provided credentials from the db
+2018-08-19 01:09:39 ERROR UserDaoJdbc:54 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:09:39 WARN  UserDaoJdbc:56 - failed to create new user
+2018-08-19 01:10:27 TRACE UserDaoJdbc:86 - failed to find user with provided credentials from the db
+2018-08-19 01:10:41 ERROR UserDaoJdbc:55 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:10:41 WARN  UserDaoJdbc:57 - failed to create new user
+2018-08-19 01:11:41 ERROR UserDaoJdbc:56 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:11:41 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 01:12:24 TRACE UserDaoJdbc:88 - failed to find user with provided credentials from the db
+2018-08-19 01:12:30 TRACE UserDaoJdbc:88 - failed to find user with provided credentials from the db
+2018-08-19 01:12:33 TRACE UserDaoJdbc:88 - failed to find user with provided credentials from the db
+2018-08-19 01:12:43 TRACE UserDaoJdbc:88 - failed to find user with provided credentials from the db
+2018-08-19 01:13:03 ERROR UserDaoJdbc:57 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:13:03 WARN  UserDaoJdbc:59 - failed to create new user
+2018-08-19 01:13:34 TRACE UserDaoJdbc:88 - failed to find user with provided credentials from the db
+2018-08-19 01:13:49 ERROR UserDaoJdbc:57 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:13:49 WARN  UserDaoJdbc:59 - failed to create new user
+2018-08-19 01:22:41 TRACE UserDaoJdbc:85 - failed to find user with provided credentials from the db
+2018-08-19 01:23:38 ERROR UserDaoJdbc:54 - ERROR: column "pass" of relation "users" does not exist
+  Position: 30
+2018-08-19 01:23:38 WARN  UserDaoJdbc:56 - failed to create new user
+2018-08-19 01:24:34 TRACE UserDaoJdbc:85 - failed to find user with provided credentials from the db
+2018-08-19 01:27:24 TRACE UserDaoJdbc:38 - 1 records created
+2018-08-19 01:27:24 TRACE UserDaoJdbc:46 - generated user id is1
+2018-08-19 01:27:44 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 01:27:44 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=243, checkingAccountBalance=null, savingsAccountBalance=null, transactionHistory=[]]
+2018-08-19 01:54:29 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 01:54:29 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=243, checkingAccountBalance=null, savingsAccountBalance=null, transactionHistory=[]]
+2018-08-19 01:56:32 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 01:56:32 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=243, checkingAccountBalance=null, savingsAccountBalance=null, transactionHistory=[]]
+2018-08-19 01:57:48 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 01:57:48 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=243, checkingAccountBalance=null, savingsAccountBalance=null, transactionHistory=[]]
+2018-08-19 02:07:42 ERROR UserDaoJdbc:56 - No value specified for parameter 6.
+2018-08-19 02:07:42 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 02:07:53 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 02:08:32 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 02:09:00 ERROR UserDaoJdbc:56 - No value specified for parameter 6.
+2018-08-19 02:09:00 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 02:09:11 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 02:15:40 ERROR UserDaoJdbc:56 - No value specified for parameter 6.
+2018-08-19 02:15:40 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 02:15:52 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 02:24:52 TRACE UserDaoJdbc:90 - failed to find user with provided credentials from the db
+2018-08-19 02:25:09 ERROR UserDaoJdbc:57 - No value specified for parameter 6.
+2018-08-19 02:25:09 WARN  UserDaoJdbc:59 - failed to create new user
+2018-08-19 02:31:34 ERROR UserDaoJdbc:56 - No value specified for parameter 6.
+2018-08-19 02:31:34 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 10:01:56 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:02:05 ERROR UserDaoJdbc:54 - No value specified for parameter 6.
+2018-08-19 10:02:05 WARN  UserDaoJdbc:56 - failed to create new user
+2018-08-19 10:02:18 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:05:53 ERROR UserDaoJdbc:54 - No value specified for parameter 6.
+2018-08-19 10:05:53 WARN  UserDaoJdbc:56 - failed to create new user
+2018-08-19 10:06:04 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:15:56 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:16:09 ERROR UserDaoJdbc:54 - No value specified for parameter 6.
+2018-08-19 10:16:09 WARN  UserDaoJdbc:56 - failed to create new user
+2018-08-19 10:16:15 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:18:13 ERROR UserDaoJdbc:56 - No value specified for parameter 6.
+2018-08-19 10:18:13 WARN  UserDaoJdbc:58 - failed to create new user
+2018-08-19 10:19:58 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 10:20:10 TRACE UserDaoJdbc:40 - 1 records created
+2018-08-19 10:20:10 TRACE UserDaoJdbc:46 - generated user id is1
+2018-08-19 10:20:24 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 10:20:24 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=232, checkingAccountBalance=0.00, savingsAccountBalance=0.00, transactionHistory=[]]
+2018-08-19 10:20:35 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 10:33:27 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 10:33:27 INFO  LoginScreen:90 - welcomeUser [id=1, username=pegleg, password=null, firstName=Peg, lastName=Leg, age=232, checkingAccountBalance=10.5, savingsAccountBalance=0.00, transactionHistory=[]]
+2018-08-19 12:53:35 TRACE UserDaoJdbc:87 - failed to find user with provided credentials from the db
+2018-08-19 12:54:00 TRACE UserDaoJdbc:40 - 1 records created
+2018-08-19 12:54:00 TRACE UserDaoJdbc:46 - generated user id is2
+2018-08-19 12:54:07 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 12:54:07 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=0.00, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 12:54:18 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 12:54:18 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 13:11:14 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 13:11:14 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 13:12:28 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 13:12:28 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=40.34, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 13:12:37 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 13:12:38 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 13:54:49 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 13:54:49 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=89.06, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 13:54:58 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 13:54:58 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 13:57:41 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 13:57:41 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=109.29, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 13:57:48 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 13:57:48 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 14:25:23 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 14:25:23 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=209.72, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 14:25:34 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 14:25:34 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 14:31:48 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 14:31:48 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=530.61, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 14:31:53 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 14:31:53 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 14:47:07 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 14:47:07 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=533.64, savingsAccountBalance=43.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 14:47:15 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 14:47:16 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 14:47:24 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 14:47:24 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:13:16 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:13:16 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=333.21, savingsAccountBalance=23.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:13:22 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:13:23 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:13:36 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:13:36 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:16:43 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:16:43 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=336.44, savingsAccountBalance=23.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:16:48 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:16:48 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:17:46 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:17:46 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=337.44, savingsAccountBalance=23.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:17:53 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:17:53 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:21:22 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:21:22 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:24:41 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:24:41 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=338.44, savingsAccountBalance=24.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:24:55 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:24:55 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:25:05 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:25:05 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:27:53 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:27:53 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=340.44, savingsAccountBalance=24.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:28:03 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:28:04 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:32:00 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:32:00 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=341.44, savingsAccountBalance=24.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:32:04 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:32:04 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:33:04 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:33:04 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=343.44, savingsAccountBalance=24.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:33:09 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:33:09 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:39:32 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:39:32 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=344.44, savingsAccountBalance=24.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:39:40 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:39:41 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:39:59 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:39:59 TRACE UserDaoJdbc:151 - 1 records created
+2018-08-19 15:40:06 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:40:06 INFO  LoginScreen:90 - welcomeUser [id=2, username=redbeard, password=null, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=321.44, savingsAccountBalance=23.43, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:48:56 TRACE UserDaoJdbc:40 - 1 records created
+2018-08-19 15:48:56 TRACE UserDaoJdbc:46 - generated user id is3
+2018-08-19 15:49:16 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:49:16 INFO  LoginScreen:90 - welcomeUser [id=3, username=redbeard, password=pass, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=0.00, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:52:28 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 15:52:36 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:52:36 INFO  LoginScreen:90 - welcomeUser [id=3, username=redbeard, password=pass, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=0.00, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:56:16 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:56:16 TRACE UserDaoJdbc:154 - 1 records created
+2018-08-19 15:57:00 TRACE UserDaoJdbc:89 - failed to find user with provided credentials from the db
+2018-08-19 15:57:26 TRACE UserDaoJdbc:40 - 1 records created
+2018-08-19 15:57:26 TRACE UserDaoJdbc:46 - generated user id is4
+2018-08-19 15:57:34 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:57:34 INFO  LoginScreen:90 - welcomeUser [id=4, username=bluebeard, password=pass, firstName=blue, lastName=beard, age=285, checkingAccountBalance=0.00, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 15:57:48 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:57:49 TRACE UserDaoJdbc:154 - 1 records created
+2018-08-19 15:58:32 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:58:32 TRACE UserDaoJdbc:154 - 1 records created
+2018-08-19 15:58:32 TRACE TransactionDaoJdbc:34 - 1 records created
+2018-08-19 15:58:32 TRACE UserDaoJdbc:154 - 1 records created
+2018-08-19 15:59:54 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 15:59:54 INFO  LoginScreen:90 - welcomeUser [id=4, username=bluebeard, password=pass, firstName=blue, lastName=beard, age=285, checkingAccountBalance=2000, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 16:00:08 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 16:00:08 INFO  LoginScreen:90 - welcomeUser [id=4, username=bluebeard, password=pass, firstName=blue, lastName=beard, age=285, checkingAccountBalance=2000, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]
+2018-08-19 16:01:04 INFO  LoginScreen:89 - user successfully logged in
+2018-08-19 16:01:04 INFO  LoginScreen:90 - welcomeUser [id=3, username=redbeard, password=pass, firstName=Red, lastName=Beard, age=230, checkingAccountBalance=1301000.34, savingsAccountBalance=0.00, t=Transaction [transactionHistory=null, transactionList=[]]]

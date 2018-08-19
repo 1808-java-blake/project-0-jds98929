@@ -2,11 +2,9 @@
 
 	import java.util.Scanner;
 
-	import com.revature.beans.User;
 
 	public class HomeScreen implements Screen {
 
-		public static User currentUser = LoginScreen.currentUser;
 		private Scanner scan = new Scanner(System.in);
 
 		public Screen start() {
@@ -29,38 +27,28 @@
 
 			case "1":
 
-				Screen ds = new DepositScreen();
-				ds.start();
+				return new DepositScreen();	
 
-				break;
 
 			case "2":
 
-				Screen ws = new WithdrawalScreen();
-				ws.start();
-
-				break;
+				return new WithdrawalScreen();
+			
 			
 			case "3":
 				
-				Screen ths = new TransactionHistoryScreen();
-				ths.start();
+				return new TransactionHistoryScreen();
 				
-				break;
 
 			case "4":
 				
-				Screen abs = new AccountBalanceScreen();
-				abs.start();
+				return new AccountBalanceScreen();
 				
-				break;
 				
 			case "5":
 				
-				Screen wires = new WireScreen();
-				wires.start();
+				return new WireScreen();
 				
-				break;
 			
 			default:
 

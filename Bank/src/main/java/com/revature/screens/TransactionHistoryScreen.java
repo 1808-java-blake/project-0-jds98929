@@ -3,14 +3,19 @@ package com.revature.screens;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.daos.TransactionDao;
+import com.revature.util.AppState;
 
 public class TransactionHistoryScreen implements Screen{
 	
-	public static User currentUser = LoginScreen.currentUser;
+	private AppState state = AppState.state;
+	private TransactionDao td = TransactionDao.currentTransactionDao;
 	private Scanner scan = new Scanner(System.in);
 	
 	public Screen start() {
-		System.out.println(currentUser.getTransactionHistory());
+		User currentUser = state.getCurrentUser();
+		td.retrieveTransactionHistory(currentUser);
+		System.out.println(currentUser.getT().getTransactionList());
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		
@@ -19,19 +24,16 @@ public class TransactionHistoryScreen implements Screen{
 		switch (selection) {
 		
 		case "1":
-			Screen hs = new HomeScreen();
-			hs.start();
-			break;
+			return new HomeScreen();
 
 		case "2":
-			System.out.println("Session ended");
-			break;
+			return new LoginScreen();
 			
 		default:
 			break;
 		
 		}
-		return new HomeScreen();
+		return this;
 	}
 
 

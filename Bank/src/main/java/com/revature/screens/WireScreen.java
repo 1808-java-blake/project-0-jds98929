@@ -1,16 +1,19 @@
 package com.revature.screens;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.daos.TransactionDao;
 import com.revature.daos.UserDao;
+import com.revature.util.AppState;
 
 public class WireScreen implements Screen{
 	
+	AppState state = AppState.state;
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao; 		
+	private TransactionDao td = TransactionDao.currentTransactionDao;
 	public static User currentUser;
 	
 	@Override		
@@ -37,7 +40,7 @@ public class WireScreen implements Screen{
 			return new HomeScreen();
 		}
 		
-		currentUser = LoginScreen.currentUser;
+		currentUser = state.getCurrentUser();
 		String stringSenderBalance = currentUser.getCheckingAccountBalance();
 		double doubleSenderBalance = Double.valueOf(stringSenderBalance);
 		doubleSenderBalance -= amount;
@@ -52,13 +55,10 @@ public class WireScreen implements Screen{
 			switch (selection) {
 			
 			case "1":
-				Screen hs = new HomeScreen();
-				hs.start();
-				break;
+				return new HomeScreen();
 
 			case "2":
-				System.out.println("Session ended");
-				break;
+				return new LoginScreen();
 				
 			default:
 				break;
@@ -68,20 +68,18 @@ public class WireScreen implements Screen{
 		}
 		
 		currentUser.setCheckingAccountBalance(df2.format(doubleSenderBalance));
-		List<String> newTransactionHistory = currentUser.getTransactionHistory();
-		newTransactionHistory.add("Sent $" + amountString + " to " + 
-				recipient.getCheckingAccountBalance() + " " + recipient.getLastName());
-		currentUser.setTransactionHistory(newTransactionHistory);
+		currentUser.getT().setTransactionHistory("Sent $" + amountString + " to " + 
+				recipient.getFirstName() + " " + recipient.getLastName());
+		td.updateTransactionHistory(currentUser);
 		ud.updateUser(currentUser);
 		
 		String stringRecipientBalance = recipient.getCheckingAccountBalance();
 		double doubleRecipientBalance = Double.valueOf(stringRecipientBalance);
 		doubleRecipientBalance += amount;
 		recipient.setCheckingAccountBalance(df2.format(doubleRecipientBalance));
-		List<String> newTransactionHistory2 = recipient.getTransactionHistory();
-		newTransactionHistory2.add("Received $" + amountString +
-				"from" + currentUser.getFirstName() + currentUser.getLastName());
-		currentUser.setTransactionHistory(newTransactionHistory);
+		recipient.getT().setTransactionHistory("Received $" + amountString +
+				"from " + currentUser.getFirstName() + " " + currentUser.getLastName());
+		td.updateTransactionHistory(recipient);
 		ud.updateUser(recipient);
 		
 		System.out.println("Wire Transfer Successful");
@@ -93,13 +91,10 @@ public class WireScreen implements Screen{
 		switch (selection) {
 		
 			case "1":
-				Screen hs = new HomeScreen();
-				hs.start();
-				break;
+				return new HomeScreen();
 
 			case "2":
-				System.out.println("Session ended");
-				break;
+				return new LoginScreen();
 				
 			default:
 				break;

@@ -1,17 +1,19 @@
 package com.revature.screens;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.daos.TransactionDao;
 import com.revature.daos.UserDao;
+import com.revature.util.AppState;
 
 public class DepositScreen implements Screen{
 	
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao; 
-	public static User currentUser = LoginScreen.currentUser;
+	private TransactionDao td = TransactionDao.currentTransactionDao;
+	private AppState state = AppState.state;
 	
 	@Override
 	
@@ -21,18 +23,18 @@ public class DepositScreen implements Screen{
 		System.out.println("Enter 2 to deposit into savings account");
 		String selection = scan.nextLine();
 		
-		deposit(selection);
+		return deposit(selection);
 		
-		return this;
 	}
 	
 	public Screen deposit(String selection) {
 		
-		double amount, doubleBalance;
+		User currentUser = state.getCurrentUser();
+		double amount = 0.0;
+		double doubleBalance;
 		DecimalFormat df2 = new DecimalFormat("#.##");
 		String amountString;
 		int length;
-		List<String> newTransactionHistory;
 		
 		switch (selection) {
 		
@@ -40,22 +42,26 @@ public class DepositScreen implements Screen{
 			System.out.println("Enter amount to deposit in the form dollars.cents: ");
 			amountString = scan.nextLine();
 			length = amountString.length();
-			if (amountString.charAt(length - 3) == '.') {
-				try {
-					amount = Double.valueOf(amountString);
-				} catch (NumberFormatException e) {
+			try {
+				if (amountString.charAt(length - 3) == '.') {
+					try {
+						amount = Double.valueOf(amountString);
+					} catch (NumberFormatException e) {
+						System.out.println("Invalid amount");
+						return returnOrQuit();
+					}
+				} else {
 					System.out.println("Invalid amount");
-					return this;
+					return returnOrQuit();
 				}
-			} else {
+			} catch (StringIndexOutOfBoundsException e) {
 				System.out.println("Invalid amount");
-				return this;
+				return returnOrQuit();
 			}
 			doubleBalance = getCheckingBalance(currentUser, amount);
 			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
-			newTransactionHistory = currentUser.getTransactionHistory();
-			newTransactionHistory.add("Deposited $" + amountString + " into checking");
-			currentUser.setTransactionHistory(newTransactionHistory);	
+			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into checking");
+			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
 
@@ -63,22 +69,26 @@ public class DepositScreen implements Screen{
 			System.out.println("Enter amount to deposit in the form dollars.cents: ");
 			amountString = scan.nextLine();
 			length = amountString.length();
-			if (amountString.charAt(length - 3) == '.') {
-				try {
-					amount = Double.valueOf(amountString);
-				} catch (NumberFormatException e) {
+			try {
+				if (amountString.charAt(length - 3) == '.') {
+					try {
+						amount = Double.valueOf(amountString);
+					} catch (NumberFormatException e) {
+						System.out.println("Invalid amount");
+						return returnOrQuit();
+					}
+				} else {
 					System.out.println("Invalid amount");
-					return this;
+					return returnOrQuit();
 				}
-			} else {
+			} catch (StringIndexOutOfBoundsException e) {
 				System.out.println("Invalid amount");
-				return this;
+				return returnOrQuit();
 			}
 			doubleBalance = getSavingsBalance(currentUser, amount);
 			currentUser.setSavingsAccountBalance(df2.format(doubleBalance));
-			newTransactionHistory = currentUser.getTransactionHistory();
-			newTransactionHistory.add("Deposited $" + amountString + " into savings");
-			currentUser.setTransactionHistory(newTransactionHistory);
+			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into savings");
+			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
 			
@@ -88,28 +98,29 @@ public class DepositScreen implements Screen{
 		}
 		
 		System.out.println("Deposit Successful");
+		return returnOrQuit();
+	}
+	
+	public Screen returnOrQuit() {
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		
-		selection = scan.nextLine();
+		String selection = scan.nextLine();
 		
 		switch (selection) {
 		
 		case "1":
-			Screen hs = new HomeScreen();
-			hs.start();
-			break;
+			return new HomeScreen();
 
 		case "2":
-			System.out.println("Session ended");
-			break;
+			return new LoginScreen();
 			
 		default:
 			break;
 		
 		}
+		System.out.println("here");
 		return this;
-		
 	}
 	
 	public double getSavingsBalance(User u, double amount) {

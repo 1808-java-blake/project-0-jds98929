@@ -4,7 +4,7 @@ import com.revature.beans.User;
 
 public interface UserDao {
 
-	public static final UserDao currentUserDao = UserSerializer.us;
+	public static final UserDao currentUserDao = new UserDaoJdbc();
 
 	
 
@@ -18,7 +18,7 @@ public interface UserDao {
 
 	 */
 
-	void createUser(User u);
+	int createUser(User u);
 
 	User findByUsernameAndPassword(String username, String password);
 	

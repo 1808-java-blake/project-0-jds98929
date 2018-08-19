@@ -1,14 +1,20 @@
 package com.revature.screens;
 
 import java.util.Scanner;
+
+import org.apache.log4j.Logger;
+
 import com.revature.beans.User;
 import com.revature.daos.UserDao;
+import com.revature.util.AppState;
 
 public class LoginScreen implements Screen {
-
+    private AppState state = AppState.state;
 	private Scanner scan = new Scanner(System.in);
+	private Logger log = Logger.getRootLogger();
 	private UserDao ud = UserDao.currentUserDao;
-	public static User currentUser; 
+	private User currentUser;
+	
 
 	@Override
 
@@ -52,9 +58,8 @@ public class LoginScreen implements Screen {
 
 		if ("register".equalsIgnoreCase(username)) {
 
-			Screen rs = new RegisterUserScreen();
-			rs.start();
-			return this;
+             return new RegisterUserScreen();
+			
 
 		}
 
@@ -64,16 +69,12 @@ public class LoginScreen implements Screen {
 
 		if ("admin".equals(password) && "admin".equals(username)) {
 			
-			Screen as = new AdminScreen();
-			as.start();
-			return this;
+			return new AdminScreen();
 		}
 		
 		if("blackbeard".equals(username) && "ocracoke".equals(password)) {
 			
-			Screen bs = new BlackbeardScreen();
-			bs.start();
-			return this;
+			return new BlackbeardScreen();
 		}
 		
 		currentUser = ud.findByUsernameAndPassword(username, password);
@@ -83,12 +84,14 @@ public class LoginScreen implements Screen {
 			System.out.println("unable to login");
 			return this;
 		}
+		state.setCurrentUser(currentUser);
 		
-	
-		Screen hs = new HomeScreen();
-		hs.start();
+		log.info("user successfully logged in");
+		log.info("welcome" + currentUser);
+		
 
-		return this;
+		return new HomeScreen();
+	
 	}
 
 

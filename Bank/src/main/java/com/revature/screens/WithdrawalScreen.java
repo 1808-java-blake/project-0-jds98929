@@ -1,17 +1,20 @@
 package com.revature.screens;
 
 import java.text.DecimalFormat;
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.User;
+import com.revature.daos.TransactionDao;
 import com.revature.daos.UserDao;
+import com.revature.util.AppState;
 
 public class WithdrawalScreen implements Screen{
 	
 	private Scanner scan = new Scanner(System.in);
 	private UserDao ud = UserDao.currentUserDao; 
-	public static User currentUser = LoginScreen.currentUser;
+	private TransactionDao td = TransactionDao.currentTransactionDao;
+	private AppState state = AppState.state;
+	private User currentUser;
 	
 	@Override
 	
@@ -21,11 +24,12 @@ public class WithdrawalScreen implements Screen{
 		System.out.println("Enter 2 to withdraw from savings account");
 		String selection = scan.nextLine();
 		
-		withdraw(selection);
-		return this;
+		return withdraw(selection);
+		
 	}
 	
 	public Screen withdraw(String selection) {
+		currentUser = state.getCurrentUser();
 		switch (selection) {
 		
 		case "1":
@@ -40,27 +44,25 @@ public class WithdrawalScreen implements Screen{
 						amount = Double.valueOf(amountString);
 					} catch (NumberFormatException e) {
 						System.out.println("Invalid amount");
-						this.returnOrQuit();
+						return returnOrQuit();
 					}
 				} else {
 					System.out.println("Invalid amount");
-					this.returnOrQuit();
+					return returnOrQuit();
 				}
 			} catch (StringIndexOutOfBoundsException e) {
 				System.out.println("Invalid amount");
-				this.returnOrQuit();
+				return returnOrQuit();
 			}
 			double doubleBalance = getCheckingBalance(currentUser, amount);
 		
 			if (doubleBalance < 0.0) {
 				System.out.println("Not enough funds");
-				this.returnOrQuit();
-				return this;
+				return returnOrQuit();
 			}
 			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
-			List<String> newTransactionHistory = currentUser.getTransactionHistory();
-			newTransactionHistory.add("Withdrew $" + amountString + " from checking");
-			currentUser.setTransactionHistory(newTransactionHistory);
+			currentUser.getT().setTransactionHistory("Withdrew $" + amountString + " from checking");
+			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
 
@@ -76,29 +78,24 @@ public class WithdrawalScreen implements Screen{
 						amount2 = Double.valueOf(amountString2);
 					} catch (NumberFormatException e) {
 						System.out.println("Invalid amount");
-						this.returnOrQuit();
-						return this;
+						return returnOrQuit();
 					}
 				} else {
 					System.out.println("Invalid amount");
-					this.returnOrQuit();
-					return this;
+					return returnOrQuit();
 				}
 			} catch (StringIndexOutOfBoundsException e) {
 				System.out.println("Invalid amount");
-				this.returnOrQuit();
-				return this;
+				return returnOrQuit();
 			}
 			double doubleBalance2 = getSavingsBalance(currentUser, amount2);
 			if (doubleBalance2 < 0.0) {
 				System.out.println("Not enough funds");
-				this.returnOrQuit();
-				return this;
+				return returnOrQuit();
 			}
 			currentUser.setSavingsAccountBalance(df22.format(doubleBalance2));
-			List<String> newTransactionHistory2 = currentUser.getTransactionHistory();
-			newTransactionHistory2.add("Withdrew $" + amountString2 + " from savings");
-			currentUser.setTransactionHistory(newTransactionHistory2);
+			currentUser.getT().setTransactionHistory("Withdrew $" + amountString2 + " from savings");
+			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
 			
@@ -109,11 +106,9 @@ public class WithdrawalScreen implements Screen{
 		
 		
 		System.out.println("Withdrawal Successful");
-		this.returnOrQuit();
-		return this;
-		
+		return returnOrQuit();
 	}
-	
+
 	public Screen returnOrQuit() {
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
@@ -123,13 +118,10 @@ public class WithdrawalScreen implements Screen{
 		switch (selection) {
 		
 		case "1":
-			Screen hs = new HomeScreen();
-			hs.start();
-			break;
+			return new HomeScreen();
 
 		case "2":
-			System.out.println("Session ended");
-			break;
+			return new LoginScreen();
 			
 		default:
 			break;

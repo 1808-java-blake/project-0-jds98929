@@ -57,29 +57,7 @@ public class RegisterUserScreen implements Screen {
 		
 		System.out.println("Registration Successful");
 		
-		System.out.println("Enter 1 to log in");
-		System.out.println("Enter 2 to exit");
-		
-		String selection = scan.nextLine();
-		
-		switch (selection) {
-		
-			case "1":
-				Screen ls = new LoginScreen();
-				ls.start();
-				break;
-
-			case "2":
-				System.out.println("Session ended");
-				break;
-				
-			default:
-				break;
-			
-
-		}
-
-		return this;
+		return new LoginScreen();
 
 	}
 
