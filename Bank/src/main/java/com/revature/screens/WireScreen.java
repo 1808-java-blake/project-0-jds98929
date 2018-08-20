@@ -19,7 +19,7 @@ public class WireScreen implements Screen{
 	@Override		
 	public Screen start() {
 		double amount;
-		DecimalFormat df2 = new DecimalFormat("#.##");
+		DecimalFormat df2 = new DecimalFormat("0.00");
 		System.out.println("Enter username of customer to wire money to");
 		System.out.println("Username: ");
 		String username = scan.nextLine();
@@ -69,7 +69,7 @@ public class WireScreen implements Screen{
 		
 		currentUser.setCheckingAccountBalance(df2.format(doubleSenderBalance));
 		currentUser.getT().setTransactionHistory("Sent $" + amountString + " to " + 
-				recipient.getFirstName() + " " + recipient.getLastName());
+				recipient.getFirstName() + " " + recipient.getLastName() + "\n");
 		td.updateTransactionHistory(currentUser);
 		ud.updateUser(currentUser);
 		
@@ -78,7 +78,7 @@ public class WireScreen implements Screen{
 		doubleRecipientBalance += amount;
 		recipient.setCheckingAccountBalance(df2.format(doubleRecipientBalance));
 		recipient.getT().setTransactionHistory("Received $" + amountString +
-				"from " + currentUser.getFirstName() + " " + currentUser.getLastName());
+				"from " + currentUser.getFirstName() + " " + currentUser.getLastName() + "\n");
 		td.updateTransactionHistory(recipient);
 		ud.updateUser(recipient);
 		

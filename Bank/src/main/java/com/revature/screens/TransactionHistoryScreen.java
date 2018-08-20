@@ -1,5 +1,6 @@
 package com.revature.screens;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.User;
@@ -15,7 +16,11 @@ public class TransactionHistoryScreen implements Screen{
 	public Screen start() {
 		User currentUser = state.getCurrentUser();
 		td.retrieveTransactionHistory(currentUser);
-		System.out.println(currentUser.getT().getTransactionList());
+		List<String> al = currentUser.getT().getTransactionList();
+		for (int i = al.size() - 1; i >= 0; i--) {
+			System.out.println(al.get(i));
+		}
+		System.out.println();
 		System.out.println("Enter 1 to return to home screen");
 		System.out.println("Enter 2 to log out");
 		

@@ -20,7 +20,7 @@ public class AccountBalanceScreen implements Screen{
 		System.out.println("Enter 2 to view savings account balance");
 		String selection = scan.nextLine();
 		
-		DecimalFormat df2 = new DecimalFormat("#.##");
+		DecimalFormat df2 = new DecimalFormat("0.00");
 		
 		switch (selection) {
 		

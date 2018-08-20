@@ -33,7 +33,7 @@ public class WithdrawalScreen implements Screen{
 		switch (selection) {
 		
 		case "1":
-			DecimalFormat df2 = new DecimalFormat("#.##");
+			DecimalFormat df2 = new DecimalFormat("0.00");
 			double amount = 0;
 			System.out.println("Enter amount to withdraw in the form dollars.cents: ");
 			String amountString = scan.nextLine();
@@ -61,7 +61,7 @@ public class WithdrawalScreen implements Screen{
 				return returnOrQuit();
 			}
 			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
-			currentUser.getT().setTransactionHistory("Withdrew $" + amountString + " from checking");
+			currentUser.getT().setTransactionHistory("Withdrew $" + amountString + " from checking \n");
 			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
@@ -94,7 +94,7 @@ public class WithdrawalScreen implements Screen{
 				return returnOrQuit();
 			}
 			currentUser.setSavingsAccountBalance(df22.format(doubleBalance2));
-			currentUser.getT().setTransactionHistory("Withdrew $" + amountString2 + " from savings");
+			currentUser.getT().setTransactionHistory("Withdrew $" + amountString2 + " from savings \n");
 			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;

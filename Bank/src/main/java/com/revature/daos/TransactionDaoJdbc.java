@@ -61,6 +61,7 @@ public class TransactionDaoJdbc implements TransactionDao {
 				
 			while(rs.next()) {
 				transactionHistory.add(rs.getString("receipt"));
+				transactionHistory.add(String.valueOf(rs.getTimestamp("t_date")) + " ");
 			}
 			
 			u.getT().setTransactionList(transactionHistory);

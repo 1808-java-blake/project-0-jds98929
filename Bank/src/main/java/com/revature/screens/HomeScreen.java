@@ -20,6 +20,8 @@
 			System.out.println("Enter 4 to view account balances");
 			
 			System.out.println("Enter 5 to wire money");
+			
+			System.out.println("Enter 6 to log out");
 
 			String selection = scan.nextLine();
 
@@ -48,6 +50,10 @@
 			case "5":
 				
 				return new WireScreen();
+				
+			case "6":
+				
+				return new LoginScreen();
 				
 			
 			default:

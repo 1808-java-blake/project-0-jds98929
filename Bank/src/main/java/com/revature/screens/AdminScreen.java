@@ -1,6 +1,7 @@
 package com.revature.screens;
 
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Scanner;
 
 import com.revature.beans.User;
@@ -15,7 +16,7 @@ public class AdminScreen implements Screen {
 
 	public Screen start() {
 		
-		DecimalFormat df2 = new DecimalFormat("#.##");
+		DecimalFormat df2 = new DecimalFormat("0.00");
 
 		System.out.println("Specify a customer to view account");
 		System.out.println("Username:");
@@ -72,7 +73,10 @@ public class AdminScreen implements Screen {
 				
 			case "3":
 				td.retrieveTransactionHistory(u);
-				System.out.println(u.getT().getTransactionList());
+				List<String> al = u.getT().getTransactionList();
+				for (int i = al.size() - 1; i >= 0; i--) {
+					System.out.println(al.get(i));
+				}
 				break;
 				
 			default:

@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 
 import com.revature.beans.User;
 import com.revature.util.ConnectionUtil;
-
+ 
 public class UserDaoJdbc implements UserDao{
 		
 	private ConnectionUtil cu = ConnectionUtil.cu;

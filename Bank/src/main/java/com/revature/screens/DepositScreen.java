@@ -32,7 +32,7 @@ public class DepositScreen implements Screen{
 		User currentUser = state.getCurrentUser();
 		double amount = 0.0;
 		double doubleBalance;
-		DecimalFormat df2 = new DecimalFormat("#.##");
+		DecimalFormat df2 = new DecimalFormat("0.00");
 		String amountString;
 		int length;
 		
@@ -60,7 +60,7 @@ public class DepositScreen implements Screen{
 			}
 			doubleBalance = getCheckingBalance(currentUser, amount);
 			currentUser.setCheckingAccountBalance(df2.format(doubleBalance));
-			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into checking");
+			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into checking \n");
 			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
@@ -87,7 +87,7 @@ public class DepositScreen implements Screen{
 			}
 			doubleBalance = getSavingsBalance(currentUser, amount);
 			currentUser.setSavingsAccountBalance(df2.format(doubleBalance));
-			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into savings");
+			currentUser.getT().setTransactionHistory("Deposited $" + amountString + " into savings \n");
 			td.updateTransactionHistory(currentUser);
 			ud.updateUser(currentUser);
 			break;
